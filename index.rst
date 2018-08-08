@@ -18,10 +18,3 @@ API and providing unparalleled scalability.
    :caption: For Developers
 
    users/getting-started
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`

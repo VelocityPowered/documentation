@@ -12,6 +12,7 @@ API and providing unparalleled scalability.
 
    users/getting-started
    users/configuration
+   users/player-info-forwarding
 
 .. toctree::
    :maxdepth: 2

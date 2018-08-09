@@ -22,33 +22,40 @@ Root section
 
 These settings mostly cover the basic, most essential settings of the proxy.
 
-+------------------------+------------+-------------------------+-------------------------------------+
-| Setting name           | Type       | Default                 | Description                         |
-+========================+============+=========================+=====================================+
-| ``bind``               | Address    | ``0.0.0.0:25577``       | This tells the proxy to accept      |
-|                        |            |                         | connections on a specific IP.       |
-|                        |            |                         | By default, Velocity will listen    |
-|                        |            |                         | for connections on all IP addresses |
-|                        |            |                         | on the computer on port 25577.      |
-+------------------------+------------+-------------------------+-------------------------------------+
-| ``motd``               | Chat       | ``&3A Velocity Server`` | This allows you to change the       |
-|                        |            |                         | message shown to players when they  |
-|                        |            |                         | add your server to their server     |
-|                        |            |                         | list. You can use legacy Minecraft  |
-|                        |            |                         | color codes or JSON chat.           |
-+------------------------+------------+-------------------------+-------------------------------------+
-| ``show-max-players``   | Integer    | ``500``                 | This allows you to customize the    |
-|                        |            |                         | number of "maximum" players in the  |
-|                        |            |                         | player's server list. Note that     |
-|                        |            |                         | Velocity doesn't have a maximum     |
-|                        |            |                         | number of players it supports.      |
-+------------------------+------------+-------------------------+-------------------------------------+
-| ``ip-forwarding``      | Mode       | ``modern``              | This allows you to customize how    |
-|                        |            |                         | player information such as IPs and  |
-|                        |            |                         | UUIDs are forwarded to your server. |
-|                        |            |                         | See the "IP forwarding" section for |
-|                        |            |                         | more information.                   |
-+------------------------+------------+-------------------------+-------------------------------------+
++-----------------------------------+------------+-------------------------+---------------------------------------+
+| Setting name                      | Type       | Default                 | Description                           |
++===================================+============+=========================+=======================================+
+| ``bind``                          | Address    | ``0.0.0.0:25577``       | This tells the proxy to accept        |
+|                                   |            |                         | connections on a specific IP.         |
+|                                   |            |                         | By default, Velocity will listen      |
+|                                   |            |                         | for connections on all IP addresses   |
+|                                   |            |                         | on the computer on port 25577.        |
++-----------------------------------+------------+-------------------------+---------------------------------------+
+| ``motd``                          | Chat       | ``&3A Velocity Server`` | This allows you to change the         |
+|                                   |            |                         | message shown to players when they    |
+|                                   |            |                         | add your server to their server       |
+|                                   |            |                         | list. You can use legacy Minecraft    |
+|                                   |            |                         | color codes or JSON chat.             |
++-----------------------------------+------------+-------------------------+---------------------------------------+
+| ``show-max-players``              | Integer    | ``500``                 | This allows you to customize the      |
+|                                   |            |                         | number of "maximum" players in the    |
+|                                   |            |                         | player's server list. Note that       |
+|                                   |            |                         | Velocity doesn't have a maximum       |
+|                                   |            |                         | number of players it supports.        |
++-----------------------------------+------------+-------------------------+---------------------------------------+
+| ``player-info-forwarding``        | Mode       | ``modern``              | This allows you to customize how      |
+|                                   |            |                         | player information such as IPs and    |
+|                                   |            |                         | UUIDs are forwarded to your server.   |
+|                                   |            |                         | See the "Player info forwarding"      |
+|                                   |            |                         | section for more information.         |
++-----------------------------------+------------+-------------------------+---------------------------------------+
+| ``player-info-forwarding-secret`` | String     | ``5up3r53cr3t``         | This setting is used as a secret to   |
+|                                   |            |                         | ensure that player info forwarded     |
+|                                   |            |                         | by Velocity comes from your proxy     |
+|                                   |            |                         | and not from someone pretending to    |
+|                                   |            |                         | run Velocity. See the "Player info    |
+|                                   |            |                         | forwarding" section for more info.    |
++-----------------------------------+------------+-------------------------+---------------------------------------+
 
 ``server`` section
 ^^^^^^^^^^^^^^^^^^
@@ -132,7 +139,10 @@ Below is the default configuration file for Velocity, ``velocity.toml``.
     #             servers using Minecraft 1.12 or lower.
     # - "modern": Forward player IPs and UUIDs as part of the login process using Velocity's native
     #             forwarding. Only applicable for Minecraft 1.13 or higher.
-    ip-forwarding = "modern"
+    player-info-forwarding = "modern"
+
+    # If you are using modern IP forwarding, configure an unique secret here.
+    player-info-forwarding-secret = "5up3r53cr3t"
 
     [servers]
     # Configure your servers here.

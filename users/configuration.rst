@@ -93,6 +93,13 @@ These settings mostly cover the basic, most essential settings of the proxy.
 |                           |            |          | ``0`` means no compression and ``9``   |
 |                           |            |          | indicates maximum compression.         |
 +---------------------------+------------+----------+----------------------------------------+
+| ``login-ratelimit``       | Integer    | ``3000`` | This setting determines the minimum    |
+|                           |            |          | amount of time (in milliseconds) that  |
+|                           |            |          | must pass before a connection from the |
+|                           |            |          | same IP address will be accepted by    |
+|                           |            |          | the proxy. A value of ``0`` disables   |
+|                           |            |          | the rate limit.                        |
++---------------------------+------------+----------+----------------------------------------+
 
 ``query`` section
 ^^^^^^^^^^^^^^^^^
@@ -162,6 +169,10 @@ Below is the default configuration file for Velocity, ``velocity.toml``.
 
     # How much compression should be done (from 0-9). The default is -1, which uses zlib's default level of 6.
     compression-level = -1
+
+    # How fast (in miliseconds) are clients allowed to connect after the last connection? Default: 3000
+    # Disable by setting to 0
+    login-ratelimit = 3000
 
     [query]
     # Whether to enable responding to GameSpy 4 query responses or not

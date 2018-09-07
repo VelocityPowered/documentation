@@ -15,9 +15,20 @@ on your backend servers.
 What server software is supported by Velocity?
 ----------------------------------------------
 
-Velocity aims to support Paper, Sponge, and Minecraft Forge. As of August 13,
-2018, no Forge support currently exists and the server has been most extensively
-tested against Paper.
+Velocity aims to support Paper, Sponge, and Minecraft Forge. As of September 7,
+2018, Forge support is available and the proxy has been most extensively tested
+against Paper, although Sponge also runs well.
+
+Is Velocity compatible with my Forge mod(s)?
+--------------------------------------------
+
+Velocity is compatible with Minecraft Forge (1.8-1.12.2) and supports legacy IP
+forwarding for SpongeForge. Most mods should work without issue and with less
+trouble than with BungeeCord or Waterfall.
+
+However, there are certain mods that are incompatible with the server-switching
+behavior Velocity employs. These are issues that only the author of the mod can
+fix, and are not issues with Velocity.
 
 What is Velocity's performance profile?
 ---------------------------------------

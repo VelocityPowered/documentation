@@ -56,6 +56,11 @@ These settings mostly cover the basic, most essential settings of the proxy.
 |                                   |            |                         | run Velocity. See the "Player info    |
 |                                   |            |                         | forwarding" section for more info.    |
 +-----------------------------------+------------+-------------------------+---------------------------------------+
+| ``announce-forge``                | Boolean    | ``false``               | This setting determines whether or    |
+|                                   |            |                         | Velocity should present itself as a   |
+|                                   |            |                         | Forge/FML-compatible server. By       |
+|                                   |            |                         | default, this is disabled.            |
++-----------------------------------+------------+-------------------------+---------------------------------------+
 
 ``server`` section
 ^^^^^^^^^^^^^^^^^^
@@ -151,6 +156,9 @@ Below is the default configuration file for Velocity, ``velocity.toml``.
     # If you are using modern IP forwarding, configure an unique secret here.
     player-info-forwarding-secret = "5up3r53cr3t"
 
+    # Announce whether or not your server supports Forge/FML. If you run a modded server, we suggest turning this on.
+    announce-forge = false
+    
     [servers]
     # Configure your servers here.
     lobby = "127.0.0.1:30066"

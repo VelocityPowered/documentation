@@ -19,4 +19,4 @@ API and providing unparalleled scalability.
    :maxdepth: 2
    :caption: For Developers
 
-   users/getting-started
+   developers/creating-your-first-plugin

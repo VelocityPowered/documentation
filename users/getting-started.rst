@@ -3,7 +3,7 @@ Getting started with Velocity
 
 Velocity is refreshingly easy to set up.
 
-.. warning:: Velocity is in an alpha-quality state and is not yet suitable for production use.
+.. warning:: Velocity is in an alpha-quality state and is primarily suited for testing and small networks.
 
 
 Installing Java

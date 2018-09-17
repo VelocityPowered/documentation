@@ -274,7 +274,7 @@ player has typed ``T``, it will suggest ``Tux``.
 
              } else {
                 return ImmutableList.of();
-            }
+             }
 
 Now here the player has tried to autocomplete another parameter of the command that
 is no the first one, so we just return an empty list since our command has only one

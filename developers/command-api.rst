@@ -1,13 +1,13 @@
 The Command API
 ==========================
 
-The Command API let's you create commands that can be executed on the console or
+The Command API lets you create commands that can be executed on the console or
 via a player connected through the proxy.
 
 Create the command class
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Each command class implements the `Command interface <https://github.com/VelocityPowered/Velocity/blob/master/api/src/main/java/com/velocitypowered/api/command/Command.java>`_, which has two methods:
+Each command class must implement the `Command interface <https://github.com/VelocityPowered/Velocity/blob/master/api/src/main/java/com/velocitypowered/api/command/Command.java>`_, which has two methods:
 one for when the command is executed and one to provide suggestions for tab completion.
 Let's see an example of a simple command that will tell whoever executes the command
 "Hello World" in light blue text.
@@ -31,7 +31,7 @@ Let's see an example of a simple command that will tell whoever executes the com
     }
 
 Now that we have created the command, we need to register it in order for it to work.
-You can use the `Command Manager <https://github.com/VelocityPowered/Velocity/blob/master/api/src/main/java/com/velocitypowered/api/command/CommandManager.java>`_ where we can register our commands.
+To register commands, you use the `Command Manager <https://github.com/VelocityPowered/Velocity/blob/master/api/src/main/java/com/velocitypowered/api/command/CommandManager.java>`_.
 We get the command manager by executing ``proxyServer.getCommandManager()`` with 
 the proxy instance, or by injecting it using the ``@Inject`` annotation in our
 main class. The register method requires two parameters, the command object and 
@@ -188,51 +188,7 @@ key, the plugin would suggest the names of the players who are online.
 We'll base on the last command example, but will add one thing. The player names
 who have kills will be able to be completed using the tab key. 
 
-
 .. code-block:: java
-
-    package com.example.velocityplugin;
-
-    import com.google.common.collect.ImmutableList;
-    import com.velocitypowered.api.command.Command;
-    import com.velocitypowered.api.command.CommandSource;
-    import net.kyori.text.TextComponent;
-    import net.kyori.text.format.TextColor;
-    import org.checkerframework.checker.nullness.qual.NonNull;
-
-    import java.util.ArrayList;
-    import java.util.HashMap;
-    import java.util.List;
-    import java.util.Map;
-    import java.util.stream.Collectors;
-
-    public class TabCompleteTest implements Command {
-
-        private final Map<String, Integer> playerKills = new HashMap<>();
-
-        public TabCompleteTest() {
-            playerKills.put("Tux", 58);
-            playerKills.put("Player2", 23);
-            playerKills.put("Player3", 17);
-        }
-
-        @Override
-        public void execute(@NonNull CommandSource source, String[] args) {
-            if (args.length != 1) {
-                source.sendMessage(TextComponent.of("Invalid usage!").color(TextColor.RED));
-                source.sendMessage(TextComponent.of("Usage: /stats <player>").color(TextColor.RED));
-                return;
-            }
-
-            String playerName = args[0];
-            if (playerKills.containsKey(playerName)) {
-                source.sendMessage(TextComponent
-                        .of(playerName + " has " + playerKills.get(playerName) + " kills.")
-                        .color(TextColor.GREEN));
-            } else {
-                source.sendMessage(TextComponent.of("Player not found").color(TextColor.RED));
-            }
-        }
 
         @Override
         public List<String> suggest(@NonNull CommandSource source, String[] currentArgs) {
@@ -246,17 +202,16 @@ who have kills will be able to be completed using the tab key.
                 return ImmutableList.of();
             }
         }
-    }
 
-Let's break down the suggest method.
+Let's break down the ``suggest`` method.
 
 .. code-block:: java
 
             if (currentArgs.length == 0) {
                 return new ArrayList<>(playerKills.keySet());
 
-Here the player has not typed a single character after the command, so we will complete
-using all the player names stored in the map.
+If the player hasn't entered anything other than the command, we will suggest all
+the names in the map.
 
 .. code-block:: java
 

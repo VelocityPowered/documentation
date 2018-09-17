@@ -222,8 +222,8 @@ the names in the map.
 
 Now the player has typed something, so we will suggest all the player names that
 start with the characters that the player has typed. For instance, if the player
-has typed ``Pla`` or ``Player``, it will suggest ``Player2`` and ``Player3``. If the
-player has typed ``T``, it will suggest ``Tux``.
+has typed ``Pla`` or ``Player``, it will suggest ``Player2`` and ``Player3``. If
+the player has typed ``T``, it will suggest ``Tux``.
 
 .. code-block:: java
 
@@ -231,6 +231,5 @@ player has typed ``T``, it will suggest ``Tux``.
                 return ImmutableList.of();
              }
 
-Now here the player has tried to autocomplete another parameter of the command that
-is no the first one, so we just return an empty list since our command has only one
-argument.
+If the player tries to autocomplete more than one argument, we return an empty
+list since our command only has one argument.

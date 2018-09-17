@@ -78,6 +78,105 @@ If a player or a console executes the following command: ``/stats Player2 kills`
 the first argument will be ``Player2``, which we can access using ``args[0]`` and
 the second argument will be ``kills``.
 
+Let's create a command that will return how many kills a player has (which are
+stored in a local hashmap for the purposes of this tutorial).
+
+The command will be ``/stats <player>``
+
+.. code-block:: java
+
+    package com.example.velocityplugin;
+
+    import com.google.common.collect.ImmutableList;
+    import com.velocitypowered.api.command.Command;
+    import com.velocitypowered.api.command.CommandSource;
+    import net.kyori.text.TextComponent;
+    import net.kyori.text.format.TextColor;
+    import org.checkerframework.checker.nullness.qual.NonNull;
+
+    import java.util.ArrayList;
+    import java.util.HashMap;
+    import java.util.List;
+    import java.util.Map;
+    import java.util.stream.Collectors;
+
+    public class TabCompleteTest implements Command {
+
+        private final Map<String, Integer> playerKills = new HashMap<>();
+
+        public TabCompleteTest() {
+            playerKills.put("Tux", 58);
+            playerKills.put("Player2", 23);
+            playerKills.put("Player3", 17);
+        }
+
+        @Override
+        public void execute(@NonNull CommandSource source, String[] args) {
+            if (args.length != 1) {
+                source.sendMessage(TextComponent.of("Invalid usage!").color(TextColor.RED));
+                source.sendMessage(TextComponent.of("Usage: /stats <player>").color(TextColor.RED));
+                return;
+            }
+
+            String playerName = args[0];
+            if (playerKills.containsKey(playerName)) {
+                source.sendMessage(TextComponent
+                        .of(playerName + " has " + playerKills.get(playerName) + " kills.")
+                        .color(TextColor.GREEN));
+            } else {
+                source.sendMessage(TextComponent.of("Player not found").color(TextColor.RED));
+            }
+        }
+    }
+
+Let's break down the command.
+
+.. code-block:: java
+        private final Map<String, Integer> playerKills = new HashMap<>();
+
+        public TabCompleteTest() {
+            playerKills.put("Tux", 58);
+            playerKills.put("Player2", 23);
+            playerKills.put("Player3", 17);
+        }
+
+We create a simple map where we'll store dummy players with kills as an example for
+this tutorial. If you were to create a stat plugin, these players would be loaded
+from the database or from another file.
+
+.. code-block:: java
+
+        @Override
+        public void execute(@NonNull CommandSource source, String[] args) {
+            if (args.length != 1) {
+                source.sendMessage(TextComponent.of("Invalid usage!").color(TextColor.RED));
+                source.sendMessage(TextComponent.of("Usage: /stats <player>").color(TextColor.RED));
+                return;
+            }
+
+We first check that the arguments are equal to 1, meaning they specified a player.
+
+.. code-block:: java
+
+                String playerName = args[0];
+
+We get the player name that was provided in the command. ``/stats Player2``, the
+``playerName`` would be ``Player2``.
+
+.. code-block:: java
+
+            if (playerKills.containsKey(playerName)) {
+                source.sendMessage(TextComponent
+                        .of(playerName + " has " + playerKills.get(playerName) + " kills.")
+                        .color(TextColor.GREEN));
+            } else {
+                source.sendMessage(TextComponent.of("Player not found").color(TextColor.RED));
+            }
+
+Finally do a simple check to see if the player has kills and display them if they
+do have, or otherwise send them a message that the player is not found.
+
+
 Creating a simple tab complete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -86,12 +185,9 @@ a command, in which the plugin will automatically give suggestions according to 
 context of the command. Let's say you're typing ``/kill `` and then press the tab
 key, the plugin would suggest the names of the players who are online.
 
-In this example we're going to be creating a simple command that will return how
-many kills a player has (which are stored in a local hashmap for the purposes of
-this tutorial). The player names who have kills will be able to be completed using
-the tab key. 
+We'll base on the last command example, but will add one thing. The player names
+who have kills will be able to be completed using the tab key. 
 
-The command will be ``/stats <player>``
 
 .. code-block:: java
 

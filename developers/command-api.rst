@@ -132,6 +132,7 @@ The command will be ``/stats <player>``
 Let's break down the command.
 
 .. code-block:: java
+
         private final Map<String, Integer> playerKills = new HashMap<>();
 
         public TabCompleteTest() {

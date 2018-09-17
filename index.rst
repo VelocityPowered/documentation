@@ -23,3 +23,4 @@ API and providing unparalleled scalability.
    :caption: For Developers
 
    developers/creating-your-first-plugin
+   developers/command-api

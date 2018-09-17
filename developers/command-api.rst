@@ -183,7 +183,7 @@ Creating a simple tab complete
 
 Tab completion is when a player or the console presses the tab key while writing
 a command, in which the plugin will automatically give suggestions according to the
-context of the command. Let's say you're typing ``/kill `` and then press the tab
+context of the command. Let's say you're typing ``/kill`` and then press the tab
 key, the plugin would suggest the names of the players who are online.
 
 We'll base on the last command example, but will add one thing. The player names

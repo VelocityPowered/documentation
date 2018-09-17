@@ -143,7 +143,7 @@ Let's break down the suggest method
             if (currentArgs.length == 0) {
                 return new ArrayList<>(playerKills.keySet());
 
-Here the player has not typed a character after the command, so we will complete
+Here the player has not typed a single character after the command, so we will complete
 using all the player names stored in the map.
 
 .. code-block:: java
@@ -155,7 +155,7 @@ using all the player names stored in the map.
 
 Now the player has typed something, so we will suggest all the player names that
 start with the characters that the player has typed. For instance, if the player
-has typed ``Pla`` or ``Player``, it will suggest ``Player1`` and ``Player2``. If the
+has typed ``Pla`` or ``Player``, it will suggest ``Player2`` and ``Player3``. If the
 player has typed ``T``, it will suggest ``Tux``.
 
 .. code-block:: java

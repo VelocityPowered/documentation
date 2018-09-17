@@ -1,9 +1,8 @@
 The Command API
 ==========================
 
-What better way to expand your plugins using commands? This page will show how
-to create, register and unregister commmands.
-
+The Command API let's you create commands that can be executed on the console or
+via a player connected through the proxy.
 
 Create the command class
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -31,8 +30,8 @@ Let's see an example of a simple command that will tell whoever executes the com
         }
     }
 
-Now that we have created the command we need to register it in order for it to work.
-We have a `Command Manager <https://github.com/VelocityPowered/Velocity/blob/master/api/src/main/java/com/velocitypowered/api/command/CommandManager.java>`_ where we can register our commands.
+Now that we have created the command, we need to register it in order for it to work.
+You can use the `Command Manager <https://github.com/VelocityPowered/Velocity/blob/master/api/src/main/java/com/velocitypowered/api/command/CommandManager.java>`_ where we can register our commands.
 We get the command manager by executing ``proxyServer.getCommandManager()`` with 
 the proxy instance, or by injecting it using the ``@Inject`` annotation in our
 main class. The register method requires two parameters, the command object and 
@@ -67,8 +66,25 @@ something like this
 As you can see we're injecting the commandManager instance but we can also obtain
 it by injecting the ``ProxyServer`` and getting it from there.
 
+How command arguments work
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The execute method has a ``String[]`` which represents the arguments of the command.
+The arguments don't include the base command. It is important to note that in the
+event that no arguments are specified, an empty array will be passed, rather than
+a null array. 
+
+If a player or a console executes the following command: ``/stats Player2 kills``,
+the first argument will be ``Player2``, which we can access using ``args[0]`` and
+the second argument will be ``kills``.
+
 Creating a simple tab complete
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Tab completion is when a player or the console presses the tab key while writing
+a command, in which the plugin will automatically give suggestions according to the
+context of the command. Let's say you're typing ``/kill `` and then press the tab
+key, the plugin would suggest the names of the players who are online.
 
 In this example we're going to be creating a simple command that will return how
 many kills a player has (which are stored in a local hashmap for the purposes of
@@ -136,7 +152,7 @@ The command will be ``/stats <player>``
         }
     }
 
-Let's break down the suggest method
+Let's break down the suggest method.
 
 .. code-block:: java
 

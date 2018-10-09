@@ -17,7 +17,22 @@ forwarding player information to your servers:
 Configuring modern forwarding
 -----------------------------
 
-Currently, no server implementations support Velocity's modern forwarding.
+Currently, only recent versions of Paper 1.13.1+ support Velocity's modern forwarding.
+
+To use modern forwarding with any supported server implementation, set the ``player-info-forwarding``
+setting in ``velocity.toml`` to ``modern``. You must also change the ``forwarding-secret``
+setting to a unique secret. You then need to ensure your server is properly configured to
+use modern Velocity forwarding.
+
+Paper
+^^^^^
+
+To allow Paper to understand the forwarded player data, in your ``paper.yml``, set
+``settings.velocity-support.enabled`` to ``true`` and ``settings.velocity-support.secret``
+to match the secret in your Velocity config. To run your server in online mode, you can
+optionally set ``settings.velocity-support.online-mode`` to ``true``. Once you're done
+editing ``paper.yml``, reboot your server.
+
 
 Configuring legacy BungeeCord-compatible forwarding
 ---------------------------------------------------

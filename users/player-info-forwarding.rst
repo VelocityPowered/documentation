@@ -29,9 +29,9 @@ Paper
 
 To allow Paper to understand the forwarded player data, in your ``paper.yml``, set
 ``settings.velocity-support.enabled`` to ``true`` and ``settings.velocity-support.secret``
-to match the secret in your Velocity config. To run your server in online mode, you can
-optionally set ``settings.velocity-support.online-mode`` to ``true``. Once you're done
-editing ``paper.yml``, reboot your server.
+to match the secret in your ``velocity.toml``. You must also set ``settings.velocity-support.online-mode``
+to the ``online-mode`` setting in your ``velocity.toml``. Once you're done editing
+``paper.yml``, reboot your server.
 
 
 Configuring legacy BungeeCord-compatible forwarding

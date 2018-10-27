@@ -17,7 +17,7 @@ forwarding player information to your servers:
 Configuring modern forwarding
 -----------------------------
 
-Currently, only builds 337 and above of Paper 1.13.1+ support Velocity's modern forwarding.
+Currently, only build 377 and above of Paper 1.13.1+ support Velocity's modern forwarding.
 
 To use modern forwarding with any supported server implementation, set the ``player-info-forwarding``
 setting in ``velocity.toml`` to ``modern``. You must also change the ``forwarding-secret``

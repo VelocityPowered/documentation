@@ -66,6 +66,18 @@ Add the following to your ``build.gradle``:
         compile 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
     }
 
+.. note::
+    As of Gradle 5, you must also specify the API dependency as an annotation
+    processor, otherwise plugin annotations won't be processed into the
+    ``velocity-info.json`` file.
+
+    .. code-block:: groovy
+
+        dependencies {
+            compile 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
+            annotationProcessor 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
+        }
+
 Setting up the dependency with Maven
 """"""""""""""""""""""""""""""""""""
 

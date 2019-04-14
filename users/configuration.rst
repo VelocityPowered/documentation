@@ -105,22 +105,43 @@ These settings mostly cover the basic, most essential settings of the proxy.
 |                           |            |          | the proxy. A value of ``0`` disables   |
 |                           |            |          | the rate limit.                        |
 +---------------------------+------------+----------+----------------------------------------+
+| ``connection-timeout``    | Integer    | ``5000`` | This setting determines how long the   |
+|                           |            |          | proxy will wait to connect to a server |
+|                           |            |          | before timing out.                     |
++---------------------------+------------+----------+----------------------------------------+
+| ``read-timeout``          | Integer    | ``30000``| This setting determines how long the   |
+|                           |            |          | proxy will wait to receive data from   |
+|                           |            |          | the server before timing out. If you   |
+|                           |            |          | use Forge, you may need to increase    |
+|                           |            |          | this setting.                          |
++---------------------------+------------+----------+----------------------------------------+
+| ``proxy-protocol``        | Boolean    | ``false``| This setting determines whether or not |
+|                           |            |          | Velocity should receive HAProxy PROXY  |
+|                           |            |          | messages. If you don't use HAProxy,    |
+|                           |            |          | leave this setting off.                |
++---------------------------+------------+----------+----------------------------------------+
 
 ``query`` section
 ^^^^^^^^^^^^^^^^^
 
-+---------------+-------------+-----------+-------------------------------------------+
-| Setting name  | Type        | Default   | Description                               |
-+===============+=============+===========+===========================================+
-| ``enabled``   | Boolean     | ``false`` | Whether or not Velocity should reply to   |
-|               |             |           | GameSpy 4 (Minecraft query protocol)      |
-|               |             |           | requests. You can usually leave this      |
-|               |             |           | false.                                    |
-+---------------+-------------+-----------+-------------------------------------------+
-| ``port``      | Number      | ``25577`` | Specifies which port that Velocity should |
-|               |             |           | listen on for GameSpy 4 (Minecraft query  |
-|               |             |           | protocol) requests.                       |
-+---------------+-------------+-----------+-------------------------------------------+
++-----------------+-------------+-----------+-------------------------------------------+
+| Setting name    | Type        | Default   | Description                               |
++=================+=============+===========+===========================================+
+| ``enabled``     | Boolean     | ``false`` | Whether or not Velocity should reply to   |
+|                 |             |           | GameSpy 4 (Minecraft query protocol)      |
+|                 |             |           | requests. You can usually leave this      |
+|                 |             |           | false.                                    |
++-----------------+-------------+-----------+-------------------------------------------+
+| ``port``        | Number      | ``25577`` | Specifies which port that Velocity should |
+|                 |             |           | listen on for GameSpy 4 (Minecraft query  |
+|                 |             |           | protocol) requests.                       |
++-----------------+-------------+-----------+-------------------------------------------+
+| ``map``         | String      | Velocity  | Specifies the map name to be shown to     |
+|                 |             |           | clients.                                  |
++-----------------+-------------+-----------+-------------------------------------------+
+| ``show-plugins``| Boolean     | False     | Whether or not Velocity plugins are       |
+|                 |             |           | included in query responses.              |
++-----------------+-------------+-----------+-------------------------------------------+
 
 The default configuration
 -------------------------
@@ -182,10 +203,24 @@ Below is the default configuration file for Velocity, ``velocity.toml``.
     # Disable by setting to 0
     login-ratelimit = 3000
 
+    # Specify a custom timeout for connection timeouts here. The default is five seconds.
+    connection-timeout = 5000
+
+    # Specify a read timeout for connections here. The default is 30 seconds.
+    read-timeout = 30000
+
+    # Enables compatibility with HAProxy.
+    proxy-protocol = false
+
     [query]
-    # Whether to enable responding to GameSpy 4 query responses or not
+    # Whether to enable responding to GameSpy 4 query responses or not.
     enabled = false
 
-    # If query responding is enabled, on what port should query response listener listen on?
+    # If query is enabled, on what port should the query protocol listen on?
     port = 25577
 
+    # This is the map name that is reported to the query services.
+    map = "Velocity"
+
+    # Whether plugins should be shown in query response by default or not
+    show-plugins = false

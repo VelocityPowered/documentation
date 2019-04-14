@@ -14,6 +14,7 @@ API and providing unparalleled scalability.
    :caption: For Server Administrators
 
    users/getting-started
+   users/commands
    users/configuration
    users/player-info-forwarding
    users/frequently-asked-questions

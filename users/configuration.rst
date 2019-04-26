@@ -83,11 +83,10 @@ These settings mostly cover the basic, most essential settings of the proxy.
 +---------------------------+------------+----------+----------------------------------------+
 | Setting name              | Type       | Default  | Description                            |
 +===========================+============+==========+========================================+
-| ``compression-threshold`` | Integer    | ``1024`` | This is the minimum size (in bytes)    |
+| ``compression-threshold`` | Integer    | ``256``  | This is the minimum size (in bytes)    |
 |                           |            |          | that a packet has to be before the     |
 |                           |            |          | proxy compresses it. Minecraft uses    |
-|                           |            |          | 256 bytes by default. Velocity uses a  |
-|                           |            |          | higher value for efficiency.           |
+|                           |            |          | 256 bytes by default.                  |
 +---------------------------+------------+----------+----------------------------------------+
 | ``compression-level``     | Integer    | ``-1``   | This setting indicates what ``zlib``   |
 |                           |            |          | compression level the proxy should use |
@@ -194,7 +193,7 @@ Below is the default configuration file for Velocity, ``velocity.toml``.
     [advanced]
     # How large a Minecraft packet has to be before we compress it. Setting this to zero will compress all packets, and
     # setting it to -1 will disable compression entirely.
-    compression-threshold = 1024
+    compression-threshold = 256
 
     # How much compression should be done (from 0-9). The default is -1, which uses zlib's default level of 6.
     compression-level = -1

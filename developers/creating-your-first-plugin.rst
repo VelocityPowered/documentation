@@ -31,7 +31,7 @@ Dependency
 +-----------------+-------------------------+
 | **Artifact ID** | ``velocity-api``        |
 +-----------------+-------------------------+
-| **Version**     | ``1.0-SNAPSHOT``        |
+| **Version**     | ``1.0.0-SNAPSHOT``      |
 +-----------------+-------------------------+
 
 Setting up your first project
@@ -63,7 +63,7 @@ Add the following to your ``build.gradle``:
     }
 
     dependencies {
-        compile 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
+        compile 'com.velocitypowered:velocity-api:1.0.0-SNAPSHOT'
     }
 
 .. note::
@@ -74,8 +74,8 @@ Add the following to your ``build.gradle``:
     .. code-block:: groovy
 
         dependencies {
-            compile 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
-            annotationProcessor 'com.velocitypowered:velocity-api:1.0-SNAPSHOT'
+            compile 'com.velocitypowered:velocity-api:1.0.0-SNAPSHOT'
+            annotationProcessor 'com.velocitypowered:velocity-api:1.0.0-SNAPSHOT'
         }
 
 Setting up the dependency with Maven
@@ -96,7 +96,7 @@ Add the following to your ``pom.xml``:
         <dependency>
             <groupId>com.velocitypowered</groupId>
             <artifactId>velocity-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

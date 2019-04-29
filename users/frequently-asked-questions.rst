@@ -4,7 +4,7 @@ Frequently asked questions
 What versions of Minecraft does Velocity support?
 -------------------------------------------------
 
-Velocity supports Minecraft 1.8-1.13.2. It is important to note, however, that
+Velocity supports Minecraft 1.8-1.14. It is important to note, however, that
 Velocity does not translate between protocol versions - most packets from
 the client and server are passed through the proxy unchanged. If you need
 a multi-protocol solution for your Minecraft server, please consider installing

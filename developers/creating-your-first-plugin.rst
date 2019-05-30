@@ -162,3 +162,28 @@ need to know is that Velocity will do this.
 
 All you need to do is build your plugin, put it in your ``plugins/`` directory, and
 try it! Isn't that nice? In the next section you'll learn about how to use the API.
+
+A word of caution
+^^^^^^^^^^^^^^^^^
+
+In Velocity, plugin loading is split into two steps: construction and initialization.
+The code in your plugin's constructor is part of the construction phase. There is
+very little you can do safely during construction, especially as the API does not
+specify which operations are safe to run during construction. Notably, you can't
+register an event listener in your constructor, because you need to have a valid
+plugin registration, but Velocity can't register the plugin until the plugin has
+been constructed, causing a "chicken or the egg" problem.
+
+To break this vicious cycle, you should always wait for initialization, which is
+indicated when Velocity fires the ``ProxyInitializeEvent``. We can do things on
+initialization by adding a listener for this event, as shown below. Note that
+Velocity automatically registers your plugin main class as a listener.
+
+.. code-block:: java
+
+        @Subscribe
+        public void onProxyInitialization(ProxyInitializeEvent event) {
+            // Do some operation demanding access to the Velocity API here.
+            // For instance, we could register an event:
+            server.getEventManager().register(this, new PluginListener()):
+        }

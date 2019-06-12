@@ -20,13 +20,13 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Velocity'
-copyright = '2018 the Velocity team'
+copyright = '2019 the Velocity team'
 author = 'the Velocity team'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '1.0.0-SNAPSHOT'
+release = '1.0.0'
 
 
 # -- General configuration ---------------------------------------------------

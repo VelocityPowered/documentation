@@ -3,11 +3,6 @@ Getting started with Velocity
 
 Velocity is refreshingly easy to set up.
 
-.. note:: Velocity is in an beta-quality state. Production networks
-          are running Velocity successfully with hundreds of concurrent players, but
-          your experience may vary.
-
-
 Installing Java
 ---------------
 

@@ -49,7 +49,7 @@ These settings mostly cover the basic, most essential settings of the proxy.
 |                                   |            |                         | See the "Player info forwarding"      |
 |                                   |            |                         | section for more information.         |
 +-----------------------------------+------------+-------------------------+---------------------------------------+
-| ``player-info-forwarding-secret`` | String     | ``5up3r53cr3t``         | This setting is used as a secret to   |
+| ``forwarding-secret``             | String     | ``5up3r53cr3t``         | This setting is used as a secret to   |
 |                                   |            |                         | ensure that player info forwarded     |
 |                                   |            |                         | by Velocity comes from your proxy     |
 |                                   |            |                         | and not from someone pretending to    |
@@ -174,7 +174,7 @@ Below is the default configuration file for Velocity, ``velocity.toml``.
     player-info-forwarding = "modern"
 
     # If you are using modern IP forwarding, configure an unique secret here.
-    player-info-forwarding-secret = "5up3r53cr3t"
+    forwarding-secret = "5up3r53cr3t"
 
     # Announce whether or not your server supports Forge/FML. If you run a modded server, we suggest turning this on.
     announce-forge = false

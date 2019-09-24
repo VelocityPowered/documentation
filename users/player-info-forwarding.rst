@@ -25,7 +25,7 @@ setting to a unique secret. You then need to ensure your server is properly conf
 use modern Velocity forwarding.
 
 .. caution:: Modern forwarding does not work with ProtocolSupport. Consider using legacy
-             legacy BungeeCord-compatible forwarding instead if you use ProtocolSupport.
+             BungeeCord-compatible forwarding instead if you use ProtocolSupport.
 
 Paper
 ^^^^^

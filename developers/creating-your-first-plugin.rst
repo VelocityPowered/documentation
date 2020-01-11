@@ -185,5 +185,5 @@ Velocity automatically registers your plugin main class as a listener.
         public void onProxyInitialization(ProxyInitializeEvent event) {
             // Do some operation demanding access to the Velocity API here.
             // For instance, we could register an event:
-            server.getEventManager().register(this, new PluginListener()):
+            server.getEventManager().register(this, new PluginListener());
         }

@@ -34,6 +34,11 @@ Dependency
 | **Version**     | ``1.0.0-SNAPSHOT``      |
 +-----------------+-------------------------+
 
+Javadocs
+^^^^^^^^
+
+Javadocs are available at `jd.velocitypowered.com <https://jd.velocitypowered.com/>`_.
+
 Setting up your first project
 -----------------------------
 

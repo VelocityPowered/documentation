@@ -74,7 +74,7 @@ Add the following to your ``build.gradle``:
 .. note::
     As of Gradle 5, you must also specify the API dependency as an annotation
     processor, otherwise plugin annotations won't be processed into the
-    ``velocity-info.json`` file.
+    ``velocity-plugin.json`` file.
 
     .. code-block:: groovy
 
